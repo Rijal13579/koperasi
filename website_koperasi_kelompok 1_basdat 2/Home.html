@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Halaman Utama</title>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+     <link rel="stylesheet" href="des.css">
+     <style>
+      /**{
+    margin: 2;
+    padding: 4;
+    list-style: none;
+    text-decoration: none;
+      }*/
+     </style>
+</head>
+
+<body>
+     <br>
+     <center>
+     <h2 class="fa fa-globe" > Halaman Data Koperasi </h2><br><br>
+     <hr size="5px">
+     </center>
+     <br>
+
+           <div class="container" align ="center">
+
+            <h3 align="center">Data-Data Pinjaman</h3><br>
+                    <div class="table-responsive" id="pagination_data" align="center"></div>
+               </div>
+
+      <script>
+     $(document).ready(function () {
+          load_data();
+
+          function load_data(page) {
+               $.ajax({
+                    url: "pagination.php",
+                    method: "POST",
+                    data: {
+                         page: page
+                    },
+                    success: function (data) {
+                         $('#pagination_data').html(data);
+                    }
+               })
+          }
+          $(document).on('click', '.pagination_link', function () {
+               var page = $(this).attr("id");
+               load_data(page);
+          });
+     });
+</script>
+</body>
+
+</html>
