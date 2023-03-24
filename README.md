@@ -1,1 +1,1 @@
-# website koperasi
+# uts basis data website koperasi
